@@ -1,47 +1,59 @@
-function filterTools() {
-    let input = document.getElementById('searchBar').value.toLowerCase();
-    let tools = document.getElementsByClassName('tool');
-    for (let i = 0; i < tools.length; i++) {
-        let tool = tools[i];
-        let text = tool.textContent.toLowerCase();
-tool.style.display = text.includes(input) ? '' : 'none';
+let košík = [];
+
+function filtrovatNástroje() {
+    let input = document.getElementById('vyhledávacíBar').value.toLowerCase();
+    let nástroje = document.getElementsByClassName('nástroj');
+    for (let i = 0; i < nástroje.length; i++) {
+        let nástroj = nástroje[i];
+        let text = nástroj.textContent.toLowerCase();
+        nástroj.style.display = text.includes(input) ? '' : 'none';
     }
 }
- 
-function applyFilters() {
-    let brand = document.getElementById('filterBrand').value.toLowerCase();
-    let model = document.getElementById('filterModel').value.toLowerCase();
-    let power = document.getElementById('filterPower').value.toLowerCase();
-    let tools = document.getElementsByClassName('tool');
-    for (let tool of tools) {
-        let toolBrand = tool.getAttribute('data-brand').toLowerCase();
-        let toolModel = tool.getAttribute('data-model').toLowerCase();
-        let toolPower = tool.getAttribute('data-power').toLowerCase();
-        if ((brand === '' || toolBrand === brand) &&
-            (model === '' || toolModel === model) &&
-            (power === '' || toolPower === power)) {
-tool.style.display = '';
-        } else {
-tool.style.display = 'none';
-        }
+
+function aplikovatFiltrKategorie() {
+    let kategorie = document.getElementById('filtrKategorie').value.toLowerCase();
+    let nástroje = document.getElementsByClassName('nástroj');
+    for (let nástroj of nástroje) {
+        let nástrojKategorie = nástroj.getAttribute('data-category').toLowerCase();
+        nástroj.style.display = (kategorie === 'vše' || nástrojKategorie === kategorie) ? '' : 'none';
     }
 }
- 
-function toggleDetails(id) {
-    let details = document.getElementById(id);
-details.style.display = details.style.display === 'none' ? 'block' : 'none';
+
+function přepnoutDetaily(id) {
+    let detaily = document.getElementById(id);
+    detaily.style.display = detaily.style.display === 'none' ? 'block' : 'none';
 }
- 
-function sendEmail(tool, startId, endId) {
-    let startDate = document.getElementById(startId).value;
-    let endDate = document.getElementById(endId).value;
- 
-    if (!startDate || !endDate) {
-        alert("Please select both start and end dates!");
+
+function přidatDoKošíku(button) {
+    let nástroj = button.closest('.nástroj').querySelector('.tool').textContent;
+    let startDatum = button.closest('.kalendář').querySelector('[id^="startDatum"]').value;
+    let endDatum = button.closest('.kalendář').querySelector('[id^="endDatum"]').value;
+    let halfDay = button.closest('.kalendář').querySelector('[id^="halfDay"]').checked;
+
+    if (!startDatum || !endDatum) {
+        alert("Prosím vyberte obě data začátku a konce!");
         return;
     }
- 
-    let subject = `Availability Request for ${tool}`;
-    let body = `I would like to request the availability of ${tool} from ${startDate} to ${endDate}.`;
-    window.location.href = `mailto:michael-06-1993@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    košík.push({ nástroj, startDatum, endDatum, halfDay });
+    alert(`${nástroj} přidán do košíku!`);
+}
+
+function odeslatEmailKošík() {
+    if (košík.length === 0) {
+        alert("Váš košík je prázdný!");
+        return;
+    }
+
+    let předmět = "Požadavek na dostupnost více nástrojů";
+    let tělo = "Rád bych požádal o dostupnost následujících nástrojů:\n\n";
+    košík.forEach(item => {
+        tělo += `${item.nástroj} od ${item.startDatum} do ${item.endDatum}`;
+        if (item.halfDay) {
+            tělo += " (pouze půl dne)";
+        }
+        tělo += "\n";
+    });
+
+    window.location.href = `mailto:michael-06-1993@hotmail.com?subject=${encodeURIComponent(předmět)}&body=${encodeURIComponent(tělo)}`;
 }
