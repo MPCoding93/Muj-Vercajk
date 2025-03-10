@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Requests and Orders</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="previous-requests">
+        <h2>Previous Requests and Orders</h2>
+        <table id="previous-requests-table">
+            <thead>
+                <tr>
+                    <th>Order Date</th>
+                    <th>Ordered Item</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody id="previous-requests-container">
+                <!-- Rows will be added here by JavaScript -->
+            </tbody>
+        </table>
+        <button class="return" onclick="returnToMainPage()">Return</button>
+    </div>
+
+    <script>
+        // Retrieve previous requests from localStorage
+        let previousRequests = JSON.parse(localStorage.getItem('previousRequests')) || [];
+
+        function displayPreviousRequests() {
+            let container = document.getElementById('previous-requests-container');
+            container.innerHTML = '';
+
+            previousRequests.forEach(request => {
+                let row = document.createElement('tr');
+
+                let orderDateCell = document.createElement('td');
+                orderDateCell.textContent = request.orderDate;
+                row.appendChild(orderDateCell);
+
+                let itemCell = document.createElement('td');
+                itemCell.textContent = request.nástroj;
+                row.appendChild(itemCell);
+
+                let startDateCell = document.createElement('td');
+                startDateCell.textContent = request.startDatum;
+                row.appendChild(startDateCell);
+
+                let endDateCell = document.createElement('td');
+                endDateCell.textContent = request.endDatum;
+                row.appendChild(endDateCell);
+
+                container.appendChild(row);
+            });
+        }
+
+        function returnToMainPage() {
+            window.location.href = 'index.html';
+        }
+
+        displayPreviousRequests();
+    </script>
+</body>
+</html>

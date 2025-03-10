@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Summary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cart-summary">
+        <h2>Cart Summary</h2>
+        <table id="cart-items-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Item Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Rows will be added here by JavaScript -->
+            </tbody>
+        </table>
+        <div>
+            <button class="order" onclick="odeslatEmailKošík()">Požádat o dostupnost</button>
+            <button class="return" onclick="returnToMainPage()">Return</button>
+        </div>
+    </div>
+
+    <script src="cart-script.js"></script>
+</body>
+</html>
