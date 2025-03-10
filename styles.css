@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+.catalog {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.filter-section, .search-section {
+    margin-bottom: 20px;
+}
+.tool {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+.tool img {
+    max-width: 150px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+.tool-info {
+    flex: 1;
+}
+.tool-info h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+.tool-info p {
+    margin: 5px 0;
+    color: #666;
+}
+.details {
+    display: none;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+.details p {
+    margin: 0;
+    color: #555;
+}
+.calendar {
+    margin-top: 10px;
+}
