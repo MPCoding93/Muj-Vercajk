@@ -4,7 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f9;
 }
-.catalog {
+.katalog {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -12,44 +12,44 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.filter-section, .search-section {
+.sekce-vyhledávání, .sekce-kategorie {
     margin-bottom: 20px;
 }
-.tool {
+.nástroj {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
 }
-.tool img {
+.nástroj img {
     max-width: 150px;
     margin-right: 20px;
     border-radius: 5px;
 }
-.tool-info {
+.info-nástroje {
     flex: 1;
 }
-.tool-info h3 {
+.info-nástroje h3 {
     margin: 0;
     font-size: 20px;
     color: #333;
 }
-.tool-info p {
+.info-nástroje p {
     margin: 5px 0;
     color: #666;
 }
-.details {
+.detaily {
     display: none;
     margin-top: 10px;
     background-color: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
 }
-.details p {
+.detaily p {
     margin: 0;
     color: #555;
 }
-.calendar {
+.kalendář {
     margin-top: 10px;
 }
