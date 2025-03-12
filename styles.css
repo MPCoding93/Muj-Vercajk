@@ -1,3 +1,4 @@
+/* Base styles for all devices */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,10 +12,6 @@ body {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.sekce-vyhledávání,
-.sekce-kategorie {
-    margin-bottom: 20px;
 }
 .nástroj {
     display: flex;
@@ -47,19 +44,9 @@ body {
     padding: 10px;
     border-radius: 5px;
 }
-.detaily p {
-    margin: 0;
-    color: #555;
-}
 .kalendář {
     margin-top: 10px;
 }
-
-.order {
-    width: 200px;
-    height: 30px;
-}
-
 .cart-icon {
     position: fixed;
     top: 10px;
@@ -71,25 +58,21 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .cart-icon img {
     width: 50px;
     height: 50px;
     margin-right: 5px;
 }
-
 #cart-count {
     font-size: 16px;
     font-weight: bold;
     color: #333;
 }
-
 #filtrKategorie {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-
 #filtrKategorie a {
     display: flex;
     align-items: center;
@@ -101,18 +84,15 @@ body {
     text-decoration: none;
     padding: 10px;
 }
-
 #filtrKategorie a:hover {
     text-decoration: underline;
 }
-
 .sekce-vyhledávání {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
-
 .previous-requests-link {
     display: flex;
     align-items: center;
@@ -123,11 +103,9 @@ body {
     text-decoration: none;
     padding: 10px;
 }
-
 .previous-requests-link:hover {
     text-decoration: underline;
 }
-
 .cart-summary {
     width: 80%;
     margin: auto;
@@ -136,46 +114,38 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .cart-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
 }
-
 .cart-item img {
     width: 50px;
     height: 50px;
     margin-right: 20px;
 }
-
 .cart-item h3 {
     margin: 0;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
-
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
-
 th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
-
 .cart-item-image {
     width: 50px;
     height: 50px;
 }
-
 .order, .return {
     background-color: #4CAF50;
     color: white;
@@ -187,11 +157,9 @@ th {
     width: 200px;
     height: 30px;
 }
-
 .return:hover {
     background-color: #45a049;
 }
-
 .remove {
     background-color: #ff0000;
     color: white;
@@ -202,4 +170,78 @@ th {
     margin-top: 20px;
     width: 200px;
     height: 30px;
+}
+
+/* Styles for computer screens */
+@media (min-width: 1200px) {
+    .katalog {
+        max-width: 1200px;
+    }
+}
+
+/* Styles for laptop screens */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .katalog {
+        max-width: 992px;
+    }
+    .nástroj img {
+        max-width: 120px;
+    }
+}
+
+/* Styles for tablet screens */
+@media (max-width: 991px) and (min-width: 768px) {
+    .katalog {
+        max-width: 768px;
+    }
+    .nástroj {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nástroj img {
+        max-width: 100px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Styles for smartphone screens */
+@media (max-width: 767px) {
+    .katalog {
+        max-width: 100%;
+        padding: 10px;
+    }
+    .nástroj {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nástroj img {
+        max-width: 80px;
+        margin-bottom: 10px;
+    }
+    .info-nástroje h3 {
+        font-size: 18px;
+    }
+    .info-nástroje p {
+        font-size: 14px;
+    }
+    .cart-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    #cart-count {
+        font-size: 14px;
+    }
+    #filtrKategorie {
+        flex-wrap: wrap;
+    }
+    #filtrKategorie a {
+        flex: 1 1 45%;
+        margin: 5px 0;
+        font-size: 14px;
+        padding: 8px;
+    }
+    .previous-requests-link {
+        font-size: 14px;
+        padding: 8px;
+    }
 }
