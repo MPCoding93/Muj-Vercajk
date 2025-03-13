@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 let košík = JSON.parse(localStorage.getItem('košík')) || [];
 
 // Function to filter tools
