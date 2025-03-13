@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Můj Vercajk</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/dotenv@10.0.0/dist/dotenv.min.js"></script>
 </head>
 <body class="index-page">
     <div class="katalog">
@@ -78,5 +79,46 @@
     </div>
     <script src="script.js"></script>
     <script src="tools-script.js"></script>
+    <script>
+        require('dotenv').config();
+
+        async function fetchToolsData() {
+            const url = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/tools.json`;
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `token ${process.env.GITHUB_TOKEN}`
+                }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                const content = atob(data.content); // Decode base64 content
+                return JSON.parse(content);
+            } else {
+                console.error('Failed to retrieve tools data from GitHub', response.statusText);
+                return [];
+            }
+        }
+
+        fetchToolsData().then(tools => {
+            displayTools(tools);
+        });
+
+        function displayTools(tools) {
+            const toolsContainer = document.getElementById('tools-container');
+            tools.forEach(tool => {
+                const toolElement = document.createElement('div');
+                toolElement.className = 'nástroj';
+                toolElement.setAttribute('data-category', tool.category);
+                toolElement.innerHTML = `
+                    <h3>${tool.name}</h3>
+                    <img src="${tool.image}" alt="${tool.name}">
+                    <p>${tool.description}</p>
+                    <button onclick="přidatDoKošíku(this)">Add to Cart</button>
+                `;
+                toolsContainer.appendChild(toolElement);
+            });
+        }
+    </script>
 </body>
 </html>
