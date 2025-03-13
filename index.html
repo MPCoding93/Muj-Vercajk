@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Můj Vercajk</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/dotenv@10.0.0/dist/dotenv.min.js"></script>
 </head>
 <body class="index-page">
     <div class="katalog">
@@ -78,47 +77,61 @@
         </div>
     </div>
     <script src="script.js"></script>
-    <script src="tools-script.js"></script>
     <script>
-        require('dotenv').config();
-
-        async function fetchToolsData() {
-            const url = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/tools.json`;
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `token ${process.env.GITHUB_TOKEN}`
-                }
-            });
+        async function loadTools() {
+            const response = await fetch('http://localhost:3000/tools');
             if (response.ok) {
-                const data = await response.json();
-                const content = atob(data.content); // Decode base64 content
-                return JSON.parse(content);
+                const tools = await response.json();
+                displayTools(tools);
             } else {
-                console.error('Failed to retrieve tools data from GitHub', response.statusText);
-                return [];
+                console.error('Failed to fetch tools data');
             }
         }
 
-        fetchToolsData().then(tools => {
-            displayTools(tools);
-        });
-
         function displayTools(tools) {
             const toolsContainer = document.getElementById('tools-container');
+            toolsContainer.innerHTML = '';
+
             tools.forEach(tool => {
                 const toolElement = document.createElement('div');
                 toolElement.className = 'nástroj';
+                toolElement.setAttribute('data-brand', tool.brand);
+                toolElement.setAttribute('data-model', tool.model);
+                toolElement.setAttribute('data-power', tool.power);
                 toolElement.setAttribute('data-category', tool.category);
+
                 toolElement.innerHTML = `
-                    <h3>${tool.name}</h3>
-                    <img src="${tool.image}" alt="${tool.name}">
-                    <p>${tool.description}</p>
-                    <button onclick="přidatDoKošíku(this)">Add to Cart</button>
+                    <img src="${tool.image}" alt="Obrázek nástroje">
+                    <div class="info-nástroje">
+                        <h3 class="tool">${tool.brand} ${tool.model}</h3>
+                        <p>Značka: ${tool.brand}</p>
+                        <p>Model: ${tool.model}</p>
+                        <p>Výkon: ${tool.power}</p>
+                        <button onclick="přepnoutDetaily('detaily-${tool.model}')">Detaily</button>
+                        <div id="detaily-${tool.model}" class="detaily" style="display: none;">
+                            <p>Technické parametry:</p>
+                            <ul>
+                                ${tool.details.map(detail => `<li>${detail}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="kalendář">
+                            <label for="startDatum-${tool.model}">Datum začátku: </label>
+                            <input type="date" id="startDatum-${tool.model}"> <br>
+                            <label for="endDatum-${tool.model}">Datum konce: </label>
+                            <input type="date" id="endDatum-${tool.model}">
+                            <br>
+                            <hr>
+                            <button onclick="přidatDoKošíku(this)">Přidat do košíku</button>
+                        </div>
+                    </div>
                 `;
+
                 toolsContainer.appendChild(toolElement);
             });
         }
+
+        loadTools();
     </script>
 </body>
 </html>
