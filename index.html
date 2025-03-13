@@ -8,279 +8,75 @@
 </head>
 <body class="index-page">
     <div class="katalog">
+       <header>
+    <div class="header-content">
         <h1>Můj Vercajk</h1>
-
-        <!--Cart-->
-        <div class="cart-icon">
-            <img src="pictures/add-to-cart.png" alt="Cart Icon">
-            <span id="cart-count">0</span>
+        <div class="login-icon" onclick="showModal('authModal')">
+            <img src="/pictures/User.svg" alt="Login">
         </div>
-
-        <!-- Sekce vyhledávání -->
+    </div>
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('authModal')">&times;</span>
+            <div class="tab">
+                <button class="mtablinks" onclick="openTab(event, 'Login')">Login</button>
+                <button class="mtablinks" onclick="openTab(event, 'Register')">Register</button>
+            </div>
+            <div id="Login" class="mtabcontent">
+                <h2>Login</h2>
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Username" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Password" required>
+                <button onclick="loginUser()">Login</button>
+                <div id="loginFeedback"></div>
+            </div>
+            <div id="Register" class="mtabcontent">
+                <h2>Register</h2>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="Last Name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" required>
+                <label for="newPassword">Password</label>
+                <input type="password" id="newPassword" placeholder="Password" required>
+                <button onclick="registerUser()">Register</button>
+                <div id="registerFeedback"></div>
+            </div>
+        </div>
+    </div>
+</header>
         <div class="sekce-vyhledávání">
             <input type="text" id="vyhledávacíBar" placeholder="Hledat nástroje..." onkeyup="filtrovatNástroje()">
             <a href="previous-requests.html" class="previous-requests-link">Předchozí žádosti</a>
-            
         </div>
-       
         <hr>
-
-        <!-- Sekce filtru kategorií -->
         <div class="sekce-kategorie">
             <label for="filtrKategorie">Hledat podle kategorie: </label>
             <div id="filtrKategorie">
                 <a href="#" onclick="aplikovatFiltrKategorie('vše')">Vše</a>
                 <a href="#" onclick="aplikovatFiltrKategorie('auto')">Auto</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('broušení')">Broušení</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('hřebíkovačka')">Hřebíkovačka</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('vrtání')">Vrtání</a>
+                <a href="#" onclick="aplikovatFiltrKategorie('broušení')">Brusky</a>
+                <a href="#" onclick="aplikovatFiltrKategorie('hrebikovacka')">Hřebíkovačky</a>
+                <a href="#" onclick="aplikovatFiltrKategorie('vrtacky')">Vrtačky</a>
                 <a href="#" onclick="aplikovatFiltrKategorie('vzduchotechnika')">Vzduchotechnika</a>
+                <a href="#" onclick="aplikovatFiltrKategorie('merici technika')">Měřicí Technika</a>
+                <a href="#" onclick="aplikovatFiltrKategorie('pily')">Pily</a>
+                <a href="#" onclick="aplikovatFiltrKategorie('osvetleny')">Osvětlený</a>
+                <a href="#" onclick="aplikovatFiltrKategorie('sroubovaky')">Šroubováky</a>
                 <a href="#" onclick="aplikovatFiltrKategorie('ostatní')">Ostatní</a>
             </div>
         </div>
         <hr>
-        <!-- Seznam nástrojů -->
-        <div class="nástroj" data-brand="Makita" data-model="AN924" data-power="N/A" data-category="hřebíkovačka">
-            <img src="pictures/Makita_AN924.jpg" alt="Obrázek nástroje">
-            <div class="info-nástroje">
-                <h3 class="tool">Makita AN924 Pneumatická hřebíkovačka, 50-90mm</h3>
-                <p>Značka: Makita</p>
-                <p>Model: AN924</p>
-                <p>Výkon: N/A</p>
-                <button onclick="přepnoutDetaily('detaily1')">Detaily</button>
-                <div id="detaily1" class="detaily">
-                    <p>Technické parametry:</p>
-                    <ul>
-                        <li>Typ hřebíku: kulatý spojovaný plastem Úhel: 21 °</li>
-                        <li>Průměr hřebíku: 2,9 - 3,76 mm</li>
-                        <li>Délka hřebíku: 50 - 90 mm</li>
-                        <li>Obsah zásobníku: 64 - 73 ks</li>
-                        <li>Pracovní tlak: 4,9 - 8,3 bar</li>
-                        <li>Hmotnost: 3,8 kg</li>
-                        <li>Rozměry (DxŠxV): 560x117x348 mm</li>
-                        <br>
-                        <li>Pro hřebíky s kulatou hlavou páskované v plastu pod úhlem 21°</li>
-                        <li>Protiskluzový adaptér ústí hřebíkovačky</li>
-                        <li> doplnění hřebíků do zásobníku</li>
-                        <li>Ochrana stroje proti hřebíkování naprázdno</li>
-                        <li>Ergonomicky tvarovaná pogumovaná rukojeť</li>
-                        <li>Možnost přepnutí režimu jednotlivého a sériového hřebíkování</li>
-                        <li>Jednoduché beznástrojové nastavení hloubky zaražení hřebíku</li>
-                        <li>Hák umožňující zavěšení stroje</li>
-                        <li>Pogumované tělo slouží jako ochrana proti poškození</li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="kalendář">
-                    <label for="startDatum1">Datum začátku: </label>
-                    <input type="date" id="startDatum1">
-                    <label for="endDatum1">Datum konce: </label>
-                    <input type="date" id="endDatum1">
-                    <br>
-                    <hr>
-                    <button onclick="přidatDoKošíku(this)">Přidat do košíku</button>
-                </div>
-            </div>
+        <div id="tools-container">
+            <!-- Tools will be dynamically added here -->
         </div>
-
-        <div class="nástroj" data-brand="Makita" data-model="DML808" data-power="3.78W" data-category="ostatní">
-            <img src="pictures/Makita_DML808.jpg" alt="Obrázek nástroje">
-            <div class="info-nástroje">
-                <h3 class="tool">Makita Aku LED svítilna</h3>
-                <p>Značka: Makita</p>
-                <p>Model: DML808</p>
-                <p>Výkon: 3.78W</p>
-                <button onclick="přepnoutDetaily('detaily2')">Detaily</button>
-                <div id="detaily2" class="detaily">
-                    <p>
-                    <ul>
-                        <li>3.78W LED lampa nastavitelná od 170 do 4500 luxů.</li>
-                        <li>Šíření světla lze upravit od oblasti zaostření po široké rozložení světla při zachování
-                            rovnoměrného rozložení světla.</li>
-                        <li>Životnost nástroje až 26 hodin s plně nabitým BL1850B.</li>
-                        <li>Tato lampa má životnost minimálně 50 000 hodin.</li>
-                        <li>Svítidlo lze upevnit ve 12 úhlech a je vybaveno praktickým montážním háčkem.</li>
-                        <li>Lehká a kompaktní svítilna na akumulátory 14,4V a 18V LXT</li>
-                        <li>LED 3.78W o výkonu 190 lumenů</li>
-                        <li>Možnost zaostření světla do jednoho bodu nebo plošného svícení</li>
-                        <li>Hlava svítilny je sklopná do 12 pozic</li>
-                        <li>Až 32 hodin svícení na jedno nabití akumulátoru BL1860B</li>
-                    </ul>
-                    </p>
-                </div>
-                <hr>
-                <div class="kalendář">
-                    <label for="startDatum2">Datum začátku: </label>
-                    <input type="date" id="startDatum2">
-                    <label for="endDatum2">Datum konce: </label>
-                    <input type="date" id="endDatum2">
-                    <br>
-                    <hr>
-                    <button onclick="přidatDoKošíku(this)">Přidat do košíku</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="nástroj" data-brand="Parkside" data-model="PDT 40 F4" data-power="N/A" data-category="auto">
-            <img src="pictures/Parkside_Razovy_Utahovak_PASSK_20-li_A1.jpeg"
-                alt="Obrázek nástroje">
-            <div class="info-nástroje">
-                <h3 class="tool">Rázový utahovák Parkside PASSK 20-Li A1 20V</h3>
-                <p>Značka: Parkside</p>
-                <p>Model: PASSK 20-li A1</p>
-                <p>Výkon: N/A</p>
-                <button onclick="přepnoutDetaily('detaily3')">Detaily</button>
-                <div id="detaily3" class="detaily">
-                    <p>Technické parametry:<br>
-                        PARKSIDE® Aku rázový utahovák na kola auta PASSK 20-Li A1, 4 Ah Kompatibilní se všemi přístroji
-                        série „PARKSIDE X 20 V Team“ Sada se skládá z aku rázového utahováku na kola auta PASSK 20-Li
-                        A1, smart akumulátoru 4 Ah PAPS 204 A1 a nabíječky PLG 20 C1 Aku rázový utahovák na kola auta
-                        PASSK 20-Li A1 Výkonný rázový utahovák na montáž kol osobních automobilů Plynule nastavitelný
-                        počet úderů/otáček 5 předvolitelných stupňů točivého momentu: 100 / 150 / 200 / 300 / 400 Nm
-                        Integrované LED pracovní světlo Ergonomický design s protiskluzovým držadlem s měkkým povrchem a
-                        praktickou sponou na opasek Včetně 4 nástrčných klíčů (17 / 19 / 21 / 23 mm) Včetně kufru Smart
-                        akumulátor 4 Ah PAPS 204 A1 Li-Ion akumulátor v nové, výkonné dimenzi díky chytré technologii
-                        akumulátoru a použití článků typu 21700 Kompaktní rozměry: o 37% menší objem a o 13% nižší
-                        hmotnost než model PARKSIDE® Akumulátor 4 Ah PAP 20 B3 Cell Balancing – zvýšená životnost
-                        akumulátoru a delší doba provozu díky rovnoměrně namáhaným článkům Maximální využití potenciálu
-                        nabití Vyvolání dat akumulátoru a konfigurování výkonnostních parametrů prostřednictvím aplikace
-                        Lidl Home přes Bluetooth®: nastavitelné režimy: výkon, vyvážený, ekologický a expert lze
-                        konfigurovat pro optimální přizpůsobení se aku nářadí PARKSIDE 20 V monitorování akumulátoru –
-                        vyvolání dat o stavu nabíjení, zůstávajícím času, době nabíjení, celkové době použití a mnoho
-                        jiného Ukazatel stavu nabití: 3stupňový Záruka: 3 roky Nabíječka PLG 20 C1 Automatické vypnutí
-                        nabíjení a LED ukazatel nabití Včetně zařízení pro upevnění na stěnu (montážní materiál není
-                        součástí balení) Záruka: 3 roky Technické údaje Aku rázový utahovák na kola auta PASSK 20-Li A1
-                        Max. točivý moment: 400 Nm Čtyřhranné upnutí: ½″ Jmenovité otáčky naprázdno: 0 – 2 300 min-1
-                        Jmenovitý počet úderů: 0 – 3 000 min-1 Smart akumulátor 4 Ah PAPS 204 A1 Typ: Li-Ion Jmenovité
-                        napětí: 20 V Kapacita: 4 Ah Nabíječka PLG 20 C1 Jmenovitý příkon: 65 W Nabíjecí proud: 2,4 A
-                        Doba nabíjení (při 20 V / 2 Ah): cca 60 min Délka síťového kabelu: cca 1,5 m Rozměry Aku rázový
-                        utahovák na kola auta PASSK 20-Li A1: cca cca 20,5 x 22,3 x 9,7 cm; kufr: 30,5 x 29,1 x 12,5 cm
-                        Smart akumulátor 4 Ah PAPS 204 A1: cca 12,3 x 5,3 x 8,4 cm Nabíječka PLG 20 C1: cca 14 x 8,4 x
-                        6,7 cm Hmotnost Aku rázový utahovák na kola auta PASSK 20-Li A1: cca 1,96 kg; kufr: cca 0,97 kg
-                        Smart akumulátor 4 Ah PAPS 204 A1: cca 601 g Nabíječka PLG 20 C1: cca 315 g
-                    </p>
-
-                </div>
-                <hr>
-                <div class="kalendář">
-                    <label for="startDatum3">Datum začátku: </label>
-                    <input type="date" id="startDatum3">
-                    <label for="endDatum3">Datum konce: </label>
-                    <input type="date" id="endDatum3">
-                    <br>
-                    <hr>
-                    <button onclick="přidatDoKošíku(this)">Přidat do košíku</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="nástroj" data-brand="Parkside" data-model="PWD 30 B1" data-power="1500W" data-category="ostatní">
-            <img src="pictures/Parkside_PWD_30_B1.webp" alt="Obrázek nástroje">
-            <div class="info-nástroje">
-                <h3 class="tool">Parkside PWD 30 B1</h3>
-                <p>Značka: Parkside</p>
-                <p>Model: PWD 30 B1</p>
-                <p>Výkon: 1500W</p>
-                <button onclick="přepnoutDetaily('detaily4')">Detaily</button>
-                <div id="detaily4" class="detaily">
-                    <p>Technické parametry:<br>
-                        odlahový, bezsáčkový, příkon 1500 W, délka kabelu 6 m, hmotnost vysavače 8,8 kg. <br>
-                        Výkonný univerzální vysavač Parkside PWD 30 B1 s příkonem 1500 W je určený na mokré a suché
-                        vysávání. Je vhodný pro použití do domácnosti, dílny nebo garáže a můžete s ním vysávat i listí
-                        nebo odčerpávat vodu.
-                    </p>
-
-                </div>
-                <hr>
-                <div class="kalendář">
-                    <label for="startDatum4">Datum začátku: </label>
-                    <input type="date" id="startDatum4">
-                    <label for="endDatum4">Datum konce: </label>
-                    <input type="date" id="endDatum4">
-                    <br>
-                    <hr>
-                    <button onclick="přidatDoKošíku(this)">Přidat do košíku</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="nástroj" data-brand="Makita" data-model="HR2470X16" data-power="780W" data-category="vrtání">
-            <img src="pictures/Makita_HR2470X16.avif" alt="Obrázek nástroje">
-            <div class="info-nástroje">
-                <h3 class="tool">Kombinované kladivo Makita HR2470X16</h3>
-                <p>Značka: Makita</p>
-                <p>Model: HR2470X16</p>
-                <p>Výkon: 780W</p>
-                <button onclick="přepnoutDetaily('detaily5')">Detaily</button>
-                <div id="detaily5" class="detaily">
-                    <p>Technické parametry:
-                    <ul>
-                        <li>Prachotěsný systém upínání SDS-PLUS</li>
-                        <li>Stejný moment pro otáčení ve směru doprava i doleva</li>
-                        <li>Cik-cak povrstvení vinutí rotoru a přáškové povrstvení statoru ideálně chrání stroj proti
-                            prachu</li>
-                        <li>Vrtání s příklepem, vrtání nebo sekání</li>
-                        <li>Omezovač momentu chrání uživatele a stroj před zpětným rázem</li>
-                    </ul>
-                    </p>
-
-                </div>
-                <hr>
-                <div class="kalendář">
-                    <label for="startDatum5">Datum začátku: </label>
-                    <input type="date" id="startDatum5">
-                    <label for="endDatum5">Datum konce: </label>
-                    <input type="date" id="endDatum5">
-                    <br>
-                    <hr>
-                    <button onclick="přidatDoKošíku(this)">Přidat do košíku</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="nástroj" data-brand="Scheppach" data-model="Air Force" data-power="1100W" data-category="auto,vzduchotechnika">
-            <img src="pictures/Scheppach_AirForce.webp" alt="Obrázek nástroje">
-            <div class="info-nástroje">
-                <h3 class="tool">Scheppach Airforce</h3>
-                <p>Značka: Scheppach</p>
-                <p>Model: AirForce</p>
-                <p>Výkon: 1100W</p>
-                <button onclick="přepnoutDetaily('detaily6')">Detaily</button>
-                <div id="detaily6" class="detaily">
-                    <p>Technické parametry:<br>
-                    Kompresor Scheppach AIR FORCE 2 je praktický, skladný, lehký, výkonný a bohatě vybavený pomocník vhodný do každé domácnosti, chaty, karavanu nebo lodě.
-                    <br>
-                    <ul>
-                        <li>Příkon: 1100 W</li>
-                        <li>Typ motoru: 230 V, 50 Hz</li>
-                        <li>Maximální tlak: 8 barů</li>
-                        <li>Sací výkon: 180 l/min</li>
-                        <li>Hmotnost: 5.50 kg</li>
-                        <li>Rozměry: 42.5 x 13.5 x 34 cm</li>
-                    </ul>
-                    </p>
-
-                </div>
-                <hr>
-                <div class="kalendář">
-                    <label for="startDatum6">Datum začátku: </label>
-                    <input type="date" id="startDatum6">
-                    <label for="endDatum6">Datum konce: </label>
-                    <input type="date" id="endDatum6">
-                    <br>
-                    <hr>
-                    <button onclick="přidatDoKošíku(this)">Přidat do košíku</button>
-                </div>
-            </div>
-        </div>
-        
         <div>
             <h2>More Coming soon!</h2>
         </div>
-        <!-- Add more placeholders as needed -->
     </div>
-
     <script src="script.js"></script>
+    <script src="tools-script.js"></script>
 </body>
-
 </html>
