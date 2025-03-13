@@ -197,59 +197,59 @@ function updateUserData(userName, newData) {
 }
 
 async function pushDataToGitHub(data, filePath) {
-    const url = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/${filePath}`;
-    const content = btoa(JSON.stringify(data)); // Encode data to base64
-    console.log('Pushing data to GitHub:', data); // Debugging statement
-    const response = await fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: 'Update data',
-        content: content,
-        sha: await getFileSha(url, process.env.GITHUB_TOKEN) // Get the SHA of the existing file
-      })
-    });
-    if (response.ok) {
-      console.log('Data pushed to GitHub successfully');
-    } else {
-      console.error('Failed to push data to GitHub', response.statusText);
-    }
+  const url = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/${filePath}`;
+  const content = btoa(JSON.stringify(data)); // Encode data to base64
+  console.log('Pushing data to GitHub:', data); // Debugging statement
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: 'Update data',
+      content: content,
+      sha: await getFileSha(url, process.env.GITHUB_TOKEN) // Get the SHA of the existing file
+    })
+  });
+  if (response.ok) {
+    console.log('Data pushed to GitHub successfully');
+  } else {
+    console.error('Failed to push data to GitHub', response.statusText);
   }
-  
-  // Function to get file SHA from GitHub
-  async function getFileSha(url, token) {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `token ${token}`
-      }
-    });
-    if (response.ok) {
-      const data = await response.json();
-      return data.sha;
-    } else {
-      return null;
+}
+
+// Function to get file SHA from GitHub
+async function getFileSha(url, token) {
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': `token ${token}`
     }
+  });
+  if (response.ok) {
+    const data = await response.json();
+    return data.sha;
+  } else {
+    return null;
   }
-  
-  // Function to retrieve data from GitHub
-  async function retrieveDataFromGitHub(filePath) {
-    const url = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/${filePath}`;
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `token ${process.env.GITHUB_TOKEN}`
-      }
-    });
-    if (response.ok) {
-      const data = await response.json();
-      const content = atob(data.content); // Decode base64 content
-      return JSON.parse(content);
-    } else {
-      console.error('Failed to retrieve data from GitHub', response.statusText);
-      return [];
+}
+
+// Function to retrieve data from GitHub
+async function retrieveDataFromGitHub(filePath) {
+  const url = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/${filePath}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': `token ${process.env.GITHUB_TOKEN}`
     }
+  });
+  if (response.ok) {
+    const data = await response.json();
+    const content = atob(data.content); // Decode base64 content
+    return JSON.parse(content);
+  } else {
+    console.error('Failed to retrieve data from GitHub', response.statusText);
+    return [];
   }
+}
