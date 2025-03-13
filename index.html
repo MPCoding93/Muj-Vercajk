@@ -83,6 +83,7 @@
                 const response = await fetch('http://localhost:3000/tools');
                 if (response.ok) {
                     const tools = await response.json();
+                    console.log('Tools data:', tools); // Debugging statement
                     displayTools(tools);
                 } else {
                     console.error('Failed to fetch tools data');
