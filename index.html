@@ -79,12 +79,16 @@
     <script src="script.js"></script>
     <script>
         async function loadTools() {
-            const response = await fetch('http://localhost:3000/tools');
-            if (response.ok) {
-                const tools = await response.json();
-                displayTools(tools);
-            } else {
-                console.error('Failed to fetch tools data');
+            try {
+                const response = await fetch('http://localhost:3000/tools');
+                if (response.ok) {
+                    const tools = await response.json();
+                    displayTools(tools);
+                } else {
+                    console.error('Failed to fetch tools data');
+                }
+            } catch (error) {
+                console.error('Error fetching tools data:', error);
             }
         }
 
