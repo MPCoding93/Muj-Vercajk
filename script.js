@@ -132,7 +132,6 @@ async function registerUser() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('newPassword').value;
     const registerFeedback = document.getElementById('registerFeedback');
-
     if (firstName && lastName && email && password) {
         const userName = `${firstName.charAt(0)}${lastName}`.toLowerCase();
         const response = await fetch('http://localhost:3000/register', {
@@ -142,7 +141,6 @@ async function registerUser() {
             },
             body: JSON.stringify({ userName, firstName, lastName, email, password })
         });
-
         if (response.ok) {
             registerFeedback.textContent = 'Registration successful!';
             registerFeedback.style.color = 'green';
@@ -162,7 +160,6 @@ async function loginUser() {
     const userName = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const loginFeedback = document.getElementById('loginFeedback');
-
     if (userName && password) {
         const response = await fetch('http://localhost:3000/login', {
             method: 'POST',
@@ -171,7 +168,6 @@ async function loginUser() {
             },
             body: JSON.stringify({ userName, password })
         });
-
         if (response.ok) {
             loginFeedback.textContent = 'Login successful!';
             loginFeedback.style.color = 'green';
