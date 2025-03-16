@@ -1,81 +1,21 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Můj Vercajk</title>
     <link rel="stylesheet" href="styles.css">
+    <title>MPRenting</title>
 </head>
-<body class="index-page">
-    <div class="katalog">
-       <header>
-    <div class="header-content">
-        <h1>Můj Vercajk</h1>
-        <div class="login-icon" onclick="showModal('authModal')">
-            <img src="pictures/User.svg" alt="Login">
-        </div>
+<body>
+    <header>
+        <h1>Welcome to MPRenting</h1>
+    </header>
+    <div class="content">
+        <h2>Welcome to MPRenting</h2>
+        <p>We moved our webpage. I fyou wish to go you our webpage, please go to this website</p>
     </div>
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('authModal')">&times;</span>
-            <div class="tab">
-                <button class="mtablinks" onclick="openTab(event, 'Login')">Login</button>
-                <button class="mtablinks" onclick="openTab(event, 'Register')">Register</button>
-            </div>
-            <div id="Login" class="mtabcontent">
-                <h2>Login</h2>
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Username" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Password" required>
-                <button onclick="loginUser()">Login</button>
-                <div id="loginFeedback"></div>
-            </div>
-            <div id="Register" class="mtabcontent">
-                <h2>Register</h2>
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" placeholder="First Name" required>
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" placeholder="Last Name" required>
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Email" required>
-                <label for="newPassword">Password</label>
-                <input type="password" id="newPassword" placeholder="Password" required>
-                <button onclick="registerUser()">Register</button>
-                <div id="registerFeedback"></div>
-            </div>
-        </div>
-    </div>
-</header>
-        <div class="sekce-vyhledávání">
-            <input type="text" id="vyhledávacíBar" placeholder="Hledat nástroje..." onkeyup="filtrovatNástroje()">
-            <a href="previous-requests.html" class="previous-requests-link">Předchozí žádosti</a>
-        </div>
-        <hr>
-        <div class="sekce-kategorie">
-            <label for="filtrKategorie">Hledat podle kategorie: </label>
-            <div id="filtrKategorie">
-                <a href="#" onclick="aplikovatFiltrKategorie('vše')">Vše</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('auto')">Auto</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('broušení')">Brusky</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('hrebikovacka')">Hřebíkovačky</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('vrtacky')">Vrtačky</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('vzduchotechnika')">Vzduchotechnika</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('merici technika')">Měřicí Technika</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('pily')">Pily</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('osvetleny')">Osvětlený</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('sroubovaky')">Šroubováky</a>
-                <a href="#" onclick="aplikovatFiltrKategorie('ostatní')">Ostatní</a>
-            </div>
-        </div>
-        <hr>
-        <div id="tools-container">
-            <!-- Tools will be dynamically added here -->
-        </div>
-        <div>
-            <h2>More Coming soon!</h2>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 MPRenting</p>
+    </footer>
 </body>
 </html>
